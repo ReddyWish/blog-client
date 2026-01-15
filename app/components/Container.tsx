@@ -13,5 +13,9 @@ const widths: Record<ContainerSize, string> = {
 };
 
 export function Container({ children, size = 'default' }: ContainerProps) {
-  return <div className={`mx-auto px-4 ${widths[size]}`}>{children}</div>;
+  return (
+    <div className={`mx-auto px-4 border-2 border-red ${widths[size]}`}>
+      {children}
+    </div>
+  );
 }

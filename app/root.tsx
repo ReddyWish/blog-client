@@ -9,6 +9,7 @@ import {
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Container } from './components/Container';
+import { ThemeProvider } from './providers/ThemeProvider';
 
 import type { Route } from './+types/root';
 import './app.css';
@@ -32,15 +33,29 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = JSON.parse(localStorage.getItem('vite-theme'));
+                  if (theme === 'dark') document.documentElement.classList.add('dark');
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
         <Meta />
         <Links />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">
-          <Container>{children}</Container>
-        </main>
-        <Footer />
+        <ThemeProvider>
+          <Header />
+          <main className="flex-1">
+            <Container size="wide">{children}</Container>
+          </main>
+          <Footer />
+        </ThemeProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
