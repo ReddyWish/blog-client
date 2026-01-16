@@ -10,8 +10,8 @@ export function getItem(key: string) {
 
 export function setItem<T>(key: string, value: T) {
   try {
-    localStorage.setItem(key, JSON.stringify(value))
+    localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
