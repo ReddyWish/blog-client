@@ -5,7 +5,7 @@ import { ThemeToggle } from './ThemeToggle';
 export function Header() {
   return (
     <header className="border-b border-border">
-      <div className="container mx-auto h-16 flex items-center justify-between max-w-6xl">
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between max-w-6xl">
         <Link to="/" className="text-xl font-semibold tracking-tight">
           Demo
         </Link>
